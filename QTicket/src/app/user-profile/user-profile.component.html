@@ -1,0 +1,40 @@
+<table *ngIf="userDetails" class="table-fill">
+  <thead>
+      <tr>
+          <th colspan="2" class="text-center">User Profile</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>First Name</td>
+          <td>{{userDetails.fullName.split(' ')[0]}}</td>
+      </tr>
+      <tr>
+          <td>Last Name</td>
+          <td>{{userDetails.fullName.split(' ')[1]}}</td>
+      </tr>
+      <tr>
+          <td>Email</td>
+          <td>{{userDetails.email}}</td>
+      </tr>
+      <tr>
+        <td>Category</td>
+        <td>{{userDetails.category}}</td>
+    </tr>
+    <tr>
+        <td>Sub Category</td>
+        <td>{{userDetails.subcategory}}</td>
+    </tr>
+    <tr>
+        <td>User Type</td>
+        <td>{{userDetails.usertype}}</td>
+    </tr>
+      <tr>
+          <td colspan="2" class="text-center">
+                <a routerLink="/home" class="btn btn-light">Back to Home</a>
+              <input type="button" (click)="onLogout()" value="Logout" />
+              
+          </td>
+      </tr>
+  </tbody>
+</table>

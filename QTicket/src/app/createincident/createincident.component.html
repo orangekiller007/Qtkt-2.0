@@ -1,0 +1,241 @@
+
+<div>
+    New Incident :
+</div>
+<!-- 
+<form #createForm="ngForm" (ngSubmit)="createForm.valid && onSubmitIncident(createForm)">
+    <input type="text" #ticketid="ngModel" [(ngModel)]="createService.selectedTicket.ticketid" name="ticketid" placeholder="Ticket ID"
+    required  minlength="4" [ngClass]="{'invalid-textbox' :createForm.submitted && !ticketid.valid }">
+    <div *ngIf="createForm.submitted && ticketid.errors">
+        <label *ngIf="ticketid.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="ticketid.errors.minlength" class="validation-message">Ticket should be atleast 4 characters.</label>
+    </div>
+
+    <input type="text" #issue="ngModel" [(ngModel)]="createService.selectedTicket.issue" name="issue" placeholder="Issue"
+    required  minlength="6" [ngClass]="{'invalid-textbox' :createForm.submitted && !issue.valid }">
+    <div *ngIf="createForm.submitted && issue.errors">
+        <label *ngIf="issue.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="issue.errors.minlength" class="validation-message">Issue should be atleast 6 characters.</label>
+    </div>
+
+    <input type="text" #summary="ngModel" [(ngModel)]="createService.selectedTicket.summary" name="summary" placeholder="Issue Summary"
+    required  minlength="10" [ngClass]="{'invalid-textbox' :createForm.submitted && !summary.valid }">
+    <div *ngIf="createForm.submitted && summary.errors">
+        <label *ngIf="summary.errors.required" class="validation-message">This field is required.</label>
+        <label *ngIf="summary.errors.minlength" class="validation-message">Summary should be atleast 10 characters.</label>
+    </div>
+
+    <input type="text" #severity="ngModel" [(ngModel)]="createService.selectedTicket.severity" name="severity" placeholder="Severity"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !severity.valid }">
+    <div *ngIf="createForm.submitted && severity.errors">
+        <label *ngIf="severity.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+    <input type="text" #internal="ngModel" [(ngModel)]="createService.selectedTicket.internal" name="internal" placeholder="Internal"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !internal.valid }">
+    <div *ngIf="createForm.submitted && internal.errors">
+        <label *ngIf="internal.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+    <input type="text" #submittedby="ngModel" [(ngModel)]="createService.selectedTicket.submittedby" name="submittedby" placeholder="Submitted By"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !submittedby.valid }">
+    <div *ngIf="createForm.submitted && submittedby.errors">
+        <label *ngIf="submittedby.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+
+    <input type="text" #updated="ngModel" [(ngModel)]="createService.selectedTicket.updated" name="updated" placeholder="Updated"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !updated.valid }">
+    <div *ngIf="createForm.submitted && updated.errors">
+        <label *ngIf="updated.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+
+    
+    <input type="text" #category="ngModel" [(ngModel)]="createService.selectedTicket.category" name="category" placeholder="Category"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !category.valid }">
+    <div *ngIf="createForm.submitted && category.errors">
+        <label *ngIf="category.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+
+    
+    <input type="text" #subcategory="ngModel" [(ngModel)]="createService.selectedTicket.subcategory" name="subcategory" placeholder="Sub Category"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !subcategory.valid }">
+    <div *ngIf="createForm.submitted && subcategory.errors">
+        <label *ngIf="subcategory.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+
+    <input type="text" #assignedto="ngModel" [(ngModel)]="createService.selectedTicket.assignedto" name="assignedto" placeholder="Assigned To"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !assignedto.valid }">
+    <div *ngIf="createForm.submitted && assignedto.errors">
+        <label *ngIf="assignedto.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+
+    <input type="text" #comments="ngModel" [(ngModel)]="createService.selectedTicket.comments" name="comments" placeholder="comments"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !comments.valid }">
+    <div *ngIf="createForm.submitted && comments.errors">
+        <label *ngIf="comments.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+    <input type="text" #state="ngModel" [(ngModel)]="createService.selectedTicket.state" name="state" placeholder="State"
+    required [ngClass]="{'invalid-textbox' :createForm.submitted && !state.valid }">
+    <div *ngIf="createForm.submitted && state.errors">
+        <label *ngIf="state.errors.required" class="validation-message">This field is required.</label>
+    </div>
+
+    <input type="submit" value="Create Incident">
+  </form>
+  -->
+
+  <!-- Success message 
+  <div class="success" *ngIf="showSucessMessage">
+    Saved successfully
+  </div>
+  
+  <div class="alert" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+  </div>
+
+-->
+<!--Below Table trial-->
+
+
+<form #createForm="ngForm" (ngSubmit)="createForm.valid && onSubmitIncident(createForm)">
+
+  <table align="center">
+        <tbody>
+          <tr>
+            <th scope="row">Ticket ID</th>
+            <td> <input type="text" #ticketid="ngModel" [(ngModel)]="createService.selectedTicket.ticketid" name="ticketid" placeholder="Ticket ID"
+                required  minlength="4" [ngClass]="{'invalid-textbox' :createForm.submitted && !ticketid.valid }">
+                <div *ngIf="createForm.submitted && ticketid.errors">
+                    <label *ngIf="ticketid.errors.required" class="validation-message">This field is required.</label>
+                    <label *ngIf="ticketid.errors.minlength" class="validation-message">Ticket should be atleast 4 characters.</label>
+                </div></td>
+          </tr>
+          <tr>
+            <th scope="row">Issue</th>
+            <td>
+                    <input type="text" #issue="ngModel" [(ngModel)]="createService.selectedTicket.issue" name="issue" placeholder="Issue"
+                    required  minlength="6" [ngClass]="{'invalid-textbox' :createForm.submitted && !issue.valid }">
+                    <div *ngIf="createForm.submitted && issue.errors">
+                        <label *ngIf="issue.errors.required" class="validation-message">This field is required.</label>
+                        <label *ngIf="issue.errors.minlength" class="validation-message">Issue should be atleast 6 characters.</label>
+                    </div></td>
+           
+          </tr>
+          <tr>
+            <th scope="row">Summary</th>
+            <td>
+                    <input type="text" #summary="ngModel" [(ngModel)]="createService.selectedTicket.summary" name="summary" placeholder="Issue Summary"
+                    required  minlength="10" [ngClass]="{'invalid-textbox' :createForm.submitted && !summary.valid }">
+                    <div *ngIf="createForm.submitted && summary.errors">
+                        <label *ngIf="summary.errors.required" class="validation-message">This field is required.</label>
+                        <label *ngIf="summary.errors.minlength" class="validation-message">Summary should be atleast 10 characters.</label>
+                    </div></td>
+          </tr>
+
+          <tr>
+                <th scope="row">Severity</th>
+                <td><input type="text" #severity="ngModel" [(ngModel)]="createService.selectedTicket.severity" name="severity" placeholder="Severity"
+                    required [ngClass]="{'invalid-textbox' :createForm.submitted && !severity.valid }">
+                    <div *ngIf="createForm.submitted && severity.errors">
+                        <label *ngIf="severity.errors.required" class="validation-message">This field is required.</label>
+                    </div></td>
+          </tr>
+
+          <tr>
+                <th scope="row">Internal</th>
+                <td><input type="text" #internal="ngModel" [(ngModel)]="createService.selectedTicket.internal" name="internal" placeholder="Internal"
+                    required [ngClass]="{'invalid-textbox' :createForm.submitted && !internal.valid }">
+                    <div *ngIf="createForm.submitted && internal.errors">
+                        <label *ngIf="internal.errors.required" class="validation-message">This field is required.</label>
+                    </div></td>
+              </tr>
+
+              <tr>
+                    <th scope="row">Submitted By</th>
+                    <td><input type="text" #submittedby="ngModel" [(ngModel)]="createService.selectedTicket.submittedby" name="submittedby" placeholder="Submitted By"
+                        required [ngClass]="{'invalid-textbox' :createForm.submitted && !submittedby.valid }">
+                        <div *ngIf="createForm.submitted && submittedby.errors">
+                            <label *ngIf="submittedby.errors.required" class="validation-message">This field is required.</label>
+                        </div></td>
+                  </tr>
+
+                  <tr>
+                        <th scope="row">Updated</th>
+                        <td>
+                                <input type="text" #updated="ngModel" [(ngModel)]="createService.selectedTicket.updated" name="updated" placeholder="Updated"
+                                required [ngClass]="{'invalid-textbox' :createForm.submitted && !updated.valid }">
+                                <div *ngIf="createForm.submitted && updated.errors">
+                                    <label *ngIf="updated.errors.required" class="validation-message">This field is required.</label>
+                                </div></td>
+                      </tr>
+
+                      <tr>
+                            <th scope="row">Category</th>
+                            <td><input type="text" #category="ngModel" [(ngModel)]="createService.selectedTicket.category" name="category" placeholder="Category"
+                                required [ngClass]="{'invalid-textbox' :createForm.submitted && !category.valid }">
+                                <div *ngIf="createForm.submitted && category.errors">
+                                    <label *ngIf="category.errors.required" class="validation-message">This field is required.</label>
+                                </div></td>
+                          </tr>
+
+                          <tr>
+                                <th scope="row">Sub Category</th>
+                                <td> 
+                                        <input type="text" #subcategory="ngModel" [(ngModel)]="createService.selectedTicket.subcategory" name="subcategory" placeholder="Sub Category"
+                                        required [ngClass]="{'invalid-textbox' :createForm.submitted && !subcategory.valid }">
+                                        <div *ngIf="createForm.submitted && subcategory.errors">
+                                            <label *ngIf="subcategory.errors.required" class="validation-message">This field is required.</label>
+                                        </div></td>
+                              </tr>
+
+                              <tr>
+                                    <th scope="row">Assigned To</th>
+                                    <td> <input type="text" #assignedto="ngModel" [(ngModel)]="createService.selectedTicket.assignedto" name="assignedto" placeholder="Assigned To"
+                                        required [ngClass]="{'invalid-textbox' :createForm.submitted && !assignedto.valid }">
+                                        <div *ngIf="createForm.submitted && assignedto.errors">
+                                            <label *ngIf="assignedto.errors.required" class="validation-message">This field is required.</label>
+                                        </div></td>
+                                  </tr>
+            
+                                  <tr>
+                                        <th scope="row">Comments</th>
+                                        <td><input type="text" #comments="ngModel" [(ngModel)]="createService.selectedTicket.comments" name="comments" placeholder="comments"
+                                            required [ngClass]="{'invalid-textbox' :createForm.submitted && !comments.valid }">
+                                            <div *ngIf="createForm.submitted && comments.errors">
+                                                <label *ngIf="comments.errors.required" class="validation-message">This field is required.</label>
+                                            </div></td>
+                                      </tr>
+            
+                                      <tr>
+                                            <th scope="row">State</th>
+                                            <td><input type="text" #state="ngModel" [(ngModel)]="createService.selectedTicket.state" name="state" placeholder="State"
+                                                required [ngClass]="{'invalid-textbox' :createForm.submitted && !state.valid }" disabled="disabled">
+                                                <div *ngIf="createForm.submitted && state.errors">
+                                                    <label *ngIf="state.errors.required" class="validation-message">This field is required.</label>
+                                                </div></td>
+                                          </tr>
+                                          <tr>
+                                              
+                                              <td colspan="2" > <a routerLink="/home" class="btn btn-light">Back to Home</a>
+                                                <input type="submit" value="Create Incident">
+                                              </td>
+                                          </tr>
+        </tbody>
+      </table>
+    </form>
+    
+    <!-- Success message -->
+    <div class="success" *ngIf="showSucessMessage">
+      Saved successfully
+    </div>
+    
+    <!-- Error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>
