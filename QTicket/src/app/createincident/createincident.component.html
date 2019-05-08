@@ -215,7 +215,7 @@
                                       <tr>
                                             <th scope="row">State</th>
                                             <td><input type="text" #state="ngModel" [(ngModel)]="createService.selectedTicket.state" name="state" placeholder="State"
-                                                required [ngClass]="{'invalid-textbox' :createForm.submitted && !state.valid }" disabled="disabled">
+                                                required [ngClass]="{'invalid-textbox' :createForm.submitted && !state.valid }">
                                                 <div *ngIf="createForm.submitted && state.errors">
                                                     <label *ngIf="state.errors.required" class="validation-message">This field is required.</label>
                                                 </div></td>

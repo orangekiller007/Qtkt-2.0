@@ -18,6 +18,7 @@ router.delete('/home/:id',ctrlIncident.deleteincident);
 router.get('/edit/:id',ctrlIncident.editincident);
 router.post('/update/:id',ctrlIncident.updateincident);
 
+router.get('/showincident',ctrlIncident.showsubmittedincident)
 module.exports = router;
 
 

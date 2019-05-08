@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { CreateincidentComponent } from './createincident/createincident.component';
 import { EditComponent } from './edit/edit.component';
+import { ShowincidentComponent } from './showincident/showincident.component';
 
 export const appRoutes: Routes = [
     {
@@ -29,6 +30,9 @@ export const appRoutes: Routes = [
     },
     {
         path:'edit/:id',component:EditComponent,canActivate:[AuthGuard]
+    },
+    {
+        path:'showincident',component:ShowincidentComponent,canActivate:[AuthGuard]
     },
     {
         path: '', redirectTo: '/login', pathMatch: 'full'

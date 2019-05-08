@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Incident = mongoose.model('Incident');
 const _ = require('lodash');
+const jwt = require('jsonwebtoken');
 
 
 module.exports.createincident = (req, res, next) => {
@@ -17,7 +18,8 @@ module.exports.createincident = (req, res, next) => {
     incident.assignedto = req.body.assignedto;
     incident.comments = req.body.comments;
     incident.state = req.body.state;
-
+//req.header
+//
 
     incident.save((err, doc) => {
         if (!err)
@@ -34,6 +36,40 @@ module.exports.createincident = (req, res, next) => {
 
 
 module.exports.showincident = (req, res, next) =>{
+    const header = req.headers['authorization'];
+    const bearer = header.split(' ');
+    const token = bearer[1];
+    req.token = token;
+
+    const decoded = jwt.verify(token, 'SECRET#123');
+
+    console.log(decoded);
+
+   // console.log(docoded.email);
+    utype=decoded['usertype'];
+    em=decoded['fullName'];
+if(utype=='User'){
+
+    Incident.find({assignedto:em},
+        (err, incident) => {
+            if (!incident)
+                return res.status(404).json({ status: false, message: 'Ticket record not found.' });
+            else
+                return res.status(200).json(incident
+                   // { status: true, incident : _.pick(incident,['issue','ticketid']) }
+                   );
+        }
+    )//.where('submittedby').equals(em) ;
+    //.where('submittedby').equals(em) ;
+    //and({submittedby:em},{assignedto:em})
+
+ 
+
+
+}
+
+else{
+
     Incident.find(//{ _id: req._id },
         (err, incident) => {
             if (!incident)
@@ -44,6 +80,7 @@ module.exports.showincident = (req, res, next) =>{
                    );
         }
     );
+}
 }
 
 module.exports.deleteincident= (req, res, next) =>{
@@ -70,7 +107,8 @@ module.exports.deleteincident= (req, res, next) =>{
 }
 
 module.exports.editincident=(req,res,next)=>{
-    Incident.findById(
+ //   Incident.findById({_id:req.params.id},function(err,result){res.json(result)})
+    Incident.findOne(
         {_id:req.params.id},function(err,result){res.json(result)}
 
     )
@@ -101,7 +139,40 @@ module.exports.updateincident=(req,res,next)=>{
         });
 }
 
+module.exports.showsubmittedincident = (req, res, next) =>{
+    const header = req.headers['authorization'];
+    const bearer = header.split(' ');
+    const token = bearer[1];
+    req.token = token;
 
+    const decoded = jwt.verify(token, 'SECRET#123');
+
+    console.log(decoded);
+
+   // console.log(docoded.email);
+    utype=decoded['usertype'];
+    em=decoded['fullName'];
+if(utype=='User'){
+
+    Incident.find({submittedby:em},
+        (err, incident) => {
+            if (!incident)
+                return res.status(404).json({ status: false, message: 'Ticket record not found.' });
+            else
+                return res.status(200).json(incident
+                   // { status: true, incident : _.pick(incident,['issue','ticketid']) }
+                   );
+        }
+    )//.where('submittedby').equals(em) ;
+    //.where('submittedby').equals(em) ;
+    //and({submittedby:em},{assignedto:em})
+
+ 
+
+
+}
+
+}
 
 
 

@@ -17,9 +17,11 @@ id;
   ngOnInit() {
 
   this.route.params.subscribe(params => {
-    this.id = params['id'];
-  });
+    //this.id = params['id'];
+    this.id=params['id'];
+    console.log(this.id);
 
+  });
 
   }
 

@@ -27,7 +27,7 @@ export class CreateService {
   constructor(private http: HttpClient) { }
 
   postTicket(ticket:Ticket){
-    return this.http.post(environment.apiBaseUrl+'/createincident',ticket,this.noAuthHeader);  }
+    return this.http.post(environment.apiBaseUrl+'/createincident',ticket);  }
 
     getIncident() {
       return this.http.get(environment.apiBaseUrl + '/home');
@@ -42,5 +42,8 @@ export class CreateService {
     updateIncident(ticket:Ticket,id){
       return this.http.post(environment.apiBaseUrl+'/update/'+id,ticket);
 
+    }
+    getSubmittedIncident() {
+      return this.http.get(environment.apiBaseUrl + '/showincident');
     }
 }

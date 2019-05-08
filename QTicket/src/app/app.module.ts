@@ -19,6 +19,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { HomeComponent } from './home/home.component';
 import { CreateincidentComponent } from './createincident/createincident.component';
 import { EditComponent } from './edit/edit.component';
+import { ShowincidentComponent } from './showincident/showincident.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditComponent } from './edit/edit.component';
     SignInComponent,
     HomeComponent,
     CreateincidentComponent,
-    EditComponent
+    EditComponent,
+    ShowincidentComponent
   ],
   imports: [
     BrowserModule,
