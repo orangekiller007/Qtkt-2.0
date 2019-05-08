@@ -9,8 +9,9 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
-router.get('/userProfile',jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 
+router.use(jwtHelper.verifyJwtToken);
+router.get('/userProfile',ctrlUser.userProfile);
 router.post('/createincident',ctrlIncident.createincident)
 router.get('/home',ctrlIncident.showincident)
 

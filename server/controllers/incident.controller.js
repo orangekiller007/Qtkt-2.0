@@ -35,65 +35,32 @@ module.exports.createincident = (req, res, next) => {
 }
 
 
-module.exports.showincident = (req, res, next) =>{
-    const header = req.headers['authorization'];
-    const bearer = header.split(' ');
-    const token = bearer[1];
-    req.token = token;
+module.exports.showincident = async (req, res, next) =>{
+    console.log(req.user);
+    let utype=req.user['usertype'];
+    let email=req.user['fullName'];
+    let cat=req.user['category'];
+    let query = {};
 
-    const decoded = jwt.verify(token, 'SECRET#123');
-
-    console.log(decoded);
-
-   // console.log(docoded.email);
-    utype=decoded['usertype'];
-    em=decoded['fullName'];
-if(utype=='User'){
-
-    Incident.find({assignedto:em},
-        (err, incident) => {
-            if (!incident)
-                return res.status(404).json({ status: false, message: 'Ticket record not found.' });
-            else
-                return res.status(200).json(incident
-                   // { status: true, incident : _.pick(incident,['issue','ticketid']) }
-                   );
-        }
-    )//.where('submittedby').equals(em) ;
-    //.where('submittedby').equals(em) ;
-    //and({submittedby:em},{assignedto:em})
-
- 
-
-
-}
-
-else{
-
-    Incident.find(//{ _id: req._id },
-        (err, incident) => {
-            if (!incident)
-                return res.status(404).json({ status: false, message: 'Ticket record not found.' });
-            else
-                return res.status(200).json(incident
-                   // { status: true, incident : _.pick(incident,['issue','ticketid']) }
-                   );
-        }
-    );
-}
+    if(utype=='User'){
+        query = {assignedto:email}
+    }
+    else if(utype=='Admin' && cat!='All'){
+        query = {category:cat}
+    }
+    else{
+        query = {};
+    }
+    let result  = await Incident.find(query)
+    if(!result){
+        return res.status(404).json({ status: false, message: 'Ticket record not found.' });
+     
+    }else{
+        return res.status(200).json(result);
+    }
 }
 
 module.exports.deleteincident= (req, res, next) =>{
- /*   Incident.remove({ _id: req.body._id },
-        (err, incident) => {
-            if (!incident)
-                return res.status(404).json({ status: false, message: 'Cannot Delete Incident' });
-            else
-                return res.status(200).json(incident
-                   // { status: true, incident : _.pick(incident,['issue','ticketid']) }
-                   );
-        }
-    );*/
 
     Incident.remove({_id:req.params.id},function(err,result){
         if(err){
@@ -139,38 +106,45 @@ module.exports.updateincident=(req,res,next)=>{
         });
 }
 
-module.exports.showsubmittedincident = (req, res, next) =>{
-    const header = req.headers['authorization'];
-    const bearer = header.split(' ');
-    const token = bearer[1];
-    req.token = token;
+module.exports.showsubmittedincident = async (req, res, next) =>{
+    //const header = req.headers['authorization'];
+    //const bearer = header.split(' ');
+    //const token = bearer[1];
+    //req.token = token;
 
-    const decoded = jwt.verify(token, 'SECRET#123');
+    //const decoded = jwt.verify(token, 'SECRET#123');
 
-    console.log(decoded);
+   // console.log(decoded);
 
    // console.log(docoded.email);
-    utype=decoded['usertype'];
-    em=decoded['fullName'];
-if(utype=='User'){
 
-    Incident.find({submittedby:em},
+
+    let utype=req.user['usertype'];
+    let em=req.user['fullName'];
+    let query = {};
+
+if(utype=='User'){
+query={submittedby:em};
+
+ /*   Incident.find({submittedby:em},
         (err, incident) => {
             if (!incident)
                 return res.status(404).json({ status: false, message: 'Ticket record not found.' });
             else
                 return res.status(200).json(incident
-                   // { status: true, incident : _.pick(incident,['issue','ticketid']) }
                    );
         }
-    )//.where('submittedby').equals(em) ;
-    //.where('submittedby').equals(em) ;
-    //and({submittedby:em},{assignedto:em})
-
- 
+    )*/
 
 
 }
+let result  = await Incident.find(query)
+    if(!result){
+        return res.status(404).json({ status: false, message: 'Ticket record not found.' });
+     
+    }else{
+        return res.status(200).json(result);
+    }
 
 }
 

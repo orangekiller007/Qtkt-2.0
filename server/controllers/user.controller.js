@@ -35,7 +35,7 @@ module.exports.authenticate = (req, res, next) => {
 }
 
 module.exports.userProfile = (req, res, next) =>{
-    User.findOne({ _id: req._id },
+    User.findOne({ _id: req.user._id },
         (err, user) => {
             if (!user)
                 return res.status(404).json({ status: false, message: 'User record not found.' });

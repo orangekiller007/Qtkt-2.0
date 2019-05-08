@@ -61,7 +61,7 @@ userSchema.methods.verifyPassword = function (password) {
 };
 
 userSchema.methods.generateJwt = function () {
-    return jwt.sign({ _id: this._id,email:this.email,fullName:this.fullName,usertype:this.usertype},
+    return jwt.sign({ _id: this._id,email:this.email,fullName:this.fullName,usertype:this.usertype,category:this.category},
         process.env.JWT_SECRET,
     {
         expiresIn: process.env.JWT_EXP
