@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CreateService } from '../shared/create.service';
 import { NgForm } from '@angular/forms';
@@ -9,17 +9,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  selected_t;
   incident:any={};
   showSucessMessage: boolean;
   serverErrorMessages: string;
-  constructor(private router: Router,private route:ActivatedRoute,private createService:CreateService) { }
+  constructor(private router: Router,private zone:NgZone,private route:ActivatedRoute,private createService:CreateService) { }
 id;
   ngOnInit() {
 
   this.route.params.subscribe(params => {
     //this.id = params['id'];
     this.id=params['id'];
-    console.log(this.id);
+    this.createService.editIncident(this.id).subscribe(data=>{
+      this.zone.run(()=>{
+        this.selected_t=data;
+      })
+    })
 
   });
 

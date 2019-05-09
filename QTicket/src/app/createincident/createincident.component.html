@@ -112,11 +112,19 @@
             
                                       <tr>
                                             <th scope="row">State</th>
-                                            <td><input type="text" #state="ngModel" [(ngModel)]="createService.selectedTicket.state" name="state" placeholder="State"
+                                           <td>
+                                           <select #state="ngModel" [(ngModel)]="createService.selectedTicket.state" name="state">
+                                            <option value="New">New</option>
+                                            <option value="Assigned">Assigned</option>
+                                            <option value="Resolved">Resolved</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                           </select>
+                                        </td>
+                                           <!-- <td><input type="text" #state="ngModel" [(ngModel)]="createService.selectedTicket.state" name="state" placeholder="State"
                                                 required [ngClass]="{'invalid-textbox' :createForm.submitted && !state.valid }">
                                                 <div *ngIf="createForm.submitted && state.errors">
                                                     <label *ngIf="state.errors.required" class="validation-message">This field is required.</label>
-                                                </div></td>
+                                                </div></td>-->
                                           </tr>
                                           <tr>
                                               

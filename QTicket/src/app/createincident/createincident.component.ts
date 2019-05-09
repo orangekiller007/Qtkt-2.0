@@ -18,6 +18,7 @@ export class CreateincidentComponent implements OnInit {
   }
   onSubmitIncident(form: NgForm)
 {
+  console.log(form);
   this.createService.postTicket(form.value).subscribe(
     res => {
       this.showSucessMessage = true;
